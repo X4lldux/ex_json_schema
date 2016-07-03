@@ -34,7 +34,8 @@ defmodule ExJsonSchema.Mixfile do
     [
       {:httpoison, "~> 0.8", only: :test},
       {:poison, "~> 1.5", only: :test},
-      {:excoveralls, "~> 0.4", only: :test}
+      {:excoveralls, "~> 0.4", only: :test},
+      {:disc_union, "~> 0.1.0"}
     ]
   end
 

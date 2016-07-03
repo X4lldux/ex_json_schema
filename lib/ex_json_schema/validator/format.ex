@@ -1,5 +1,7 @@
 defmodule ExJsonSchema.Validator.Format do
   alias ExJsonSchema.Validator
+  alias ExJsonSchema.Validator.Error
+  require ExJsonSchema.Validator.Error
 
   @date_time_regex ~r/^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[01][0-9]):[0-5][0-9])?$/
   @email_regex ~r<^[\w!#$%&'*+/=?`{|}~^-]+(?:\.[\w!#$%&'*+/=?`{|}~^-]+)*@(?:[A-Z0-9-]+\.)+[A-Z]{2,6}$>i
@@ -16,23 +18,33 @@ defmodule ExJsonSchema.Validator.Format do
   def validate(_, _), do: []
 
   defp do_validate("date-time", data) do
-    validate_with_regex(data, @date_time_regex, fn data -> "Expected #{inspect(data)} to be a valid ISO 8601 date-time." end)
+    validate_with_regex(data, @date_time_regex, fn data ->
+      Error.not_an_iso8601_date_time(inspect(data))
+    end)
   end
 
   defp do_validate("email", data) do
-    validate_with_regex(data, @email_regex, fn data -> "Expected #{inspect(data)} to be an email address." end)
+    validate_with_regex(data, @email_regex, fn data ->
+      Error.not_an_email(inspect(data))
+    end)
   end
 
   defp do_validate("hostname", data) do
-    validate_with_regex(data, @hostname_regex, fn data -> "Expected #{inspect(data)} to be a host name." end)
+    validate_with_regex(data, @hostname_regex, fn data ->
+      Error.not_a_hostname(inspect(data))
+    end)
   end
 
   defp do_validate("ipv4", data) do
-    validate_with_regex(data, @ipv4_regex, fn data -> "Expected #{inspect(data)} to be an IPv4 address." end)
+    validate_with_regex(data, @ipv4_regex, fn data ->
+      Error.not_an_ip_v4(inspect(data))
+    end)
   end
 
   defp do_validate("ipv6", data) do
-    validate_with_regex(data, @ipv6_regex, fn data -> "Expected #{inspect(data)} to be an IPv6 address." end)
+    validate_with_regex(data, @ipv6_regex, fn data ->
+      Error.not_an_ip_v6(inspect(data))
+    end)
   end
 
   defp do_validate(_, _) do

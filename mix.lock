@@ -1,4 +1,5 @@
 %{"certifi": {:hex, :certifi, "0.3.0", "389d4b126a47895fe96d65fcf8681f4d09eca1153dc2243ed6babad0aac1e763", [:rebar3], []},
+  "disc_union": {:hex, :disc_union, "0.1.1", "2512f4a2a3d879802c29dd167d1591573db7d2fcc9e94bf3949966696773d8a6", [:mix], []},
   "excoveralls": {:hex, :excoveralls, "0.4.3", "4686632eca286951d556ecbe909bcbba0b509443c4a677a296ba3ef047349f3e", [:mix], [{:hackney, ">= 0.12.0", [hex: :hackney, optional: false]}, {:exjsx, "~> 3.0", [hex: :exjsx, optional: false]}]},
   "exjsx": {:hex, :exjsx, "3.2.0", "7136cc739ace295fc74c378f33699e5145bead4fdc1b4799822d0287489136fb", [:mix], [{:jsx, "~> 2.6.2", [hex: :jsx, optional: false]}]},
   "hackney": {:hex, :hackney, "1.4.8", "c8c6977ed55cc5095e3929f6d94a6f732dd2e31ae42a7b9236d5574ec3f5be13", [:rebar3], [{:ssl_verify_hostname, "1.0.5", [hex: :ssl_verify_hostname, optional: false]}, {:mimerl, "1.0.2", [hex: :mimerl, optional: false]}, {:idna, "1.0.3", [hex: :idna, optional: false]}, {:certifi, "0.3.0", [hex: :certifi, optional: false]}]},
